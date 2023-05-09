@@ -1,0 +1,88 @@
+.knowContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    padding-left: 15px;
+    background-color: rgb(255,162,119);
+    height: 100vh;
+    
+}
+
+.knowWrapperLeft {
+    /* flex: 2; */
+    padding-right: 40px;
+    padding-left: 40px;
+}
+
+.knowWrapperRight {
+    /* flex: 2; */
+    display: flex;
+    justify-content: center;
+}
+
+.knowCommon {
+    color: white;
+    animation-delay: 5s;
+    animation-name: fadeout;
+    animation-iteration-count: infinite;
+    animation-duration: 10s;
+}
+
+@keyframes fadeout {
+    50% {
+        color: brown;
+    }
+}
+
+.knowBox {
+    background-color: white;
+    width: 50%;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.knowBullets {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 20px;
+}
+
+.knowBulletsInside {
+    margin-top: 10px;
+    list-style: none;
+}
+
+.knowBulletsTilde {
+    height: 20px;
+    padding-right: 10px;
+}
+
+.knowQR {
+    color: brown;
+    font-weight: bold;
+}
+
+.knowbuttonContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.knowButton {
+    border: none;
+    border-radius: 15px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: bold;
+    background-color: rgb(255,162,119);
+    cursor: pointer;
+}
+
+.knowButton:hover{
+    background-color: rgb(255, 119, 119);
+}
+
+

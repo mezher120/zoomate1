@@ -1,0 +1,41 @@
+export const houses = [
+    {country: "Argentina",
+     city: "Buenos Aires",
+     neighborhood: "Caballito",
+     image: "a",
+     pricePerNight: 150 
+    }
+]
+
+export const places = [
+    {country: "Argentina",
+     city: "Ciudad de Buenos Aires",
+     neighborhood: "Caballito"},
+     {country: "Argentina",
+     city: "Ciudad de Buenos Aires",
+     neighborhood: "Palermo"},
+     {country: "Argentina",
+     city: "Ciudad de Buenos Aires",
+     neighborhood: "Flores"},
+     {country: "Argentina",
+     city: "Ciudad de Buenos Aires",
+     neighborhood: "Floresta"},
+     {country: "Argentina",
+     city: "Ciudad de Buenos Aires",
+     neighborhood: "San Telmo"},
+     {country: "Argentina",
+     city: "Cordoba",
+     neighborhood: "Cordoba"},
+     {country: "Argentina",
+     city: "Buenos Aires",
+     neighborhood: "Ituzaingo"},
+     {country: "Argentina",
+     city: "Buenos Aires",
+     neighborhood: "Castelar"},
+     {country: "Argentina",
+     city: "Buenos Aires",
+     neighborhood: "San Isidro"},
+     {country: "Argentina",
+     city: "Buenos Aires",
+     neighborhood: "Vicente Lopez"},
+]

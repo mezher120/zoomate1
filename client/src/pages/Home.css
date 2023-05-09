@@ -1,0 +1,14 @@
+.HomeCardsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.homeFooterPosition {
+    bottom: 0;
+    position: sticky;
+    background-color: white;
+    height: 40px;
+}

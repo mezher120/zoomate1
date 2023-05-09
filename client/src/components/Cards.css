@@ -1,0 +1,83 @@
+.Cardscontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 450px;
+    width: 300px;
+    cursor: pointer;
+    padding-bottom: 5px;
+
+}
+
+.Cardscontainer:hover {
+    /* border: 1px solid rgb(200, 200, 200);
+    border-radius: 15px 15px 15px 15px; */
+    /* background: linear-gradient(180deg,rgba(0,27,65,.65) 0,rgba(0,27,65,0));
+    z-index: 2; */
+}
+
+.CardHeader {
+    position: relative;
+    height: 100%;
+}
+
+.CardImg {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+
+    /* display: none; */
+}
+
+.CardImg:hover {
+    filter: sepia(30%)
+}
+
+.CardFavoriteIcon {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.CardFavoriteIcon:hover {
+    color: rgb(250, 0, 0);    
+}
+
+.CardDescription {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0px 4px;
+
+}
+
+.CardCity {
+    font-weight: bold;
+}
+
+.CardStarFavorite {
+    display: flex;
+    align-items: center;
+}
+
+.CardStarIndividual:hover {
+    color: rgb(250, 183, 0);    
+    cursor: pointer;
+}
+
+.CardPrice {
+    text-align: left;
+    width: 100%;
+    padding-left: 4px;
+    font-weight: bold;
+}
+
+.Cardnight {
+    font-weight: lighter;
+}

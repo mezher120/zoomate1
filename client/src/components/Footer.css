@@ -1,0 +1,8 @@
+.footerContainer {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    height: inherit;
+    padding-right: 10px;
+}

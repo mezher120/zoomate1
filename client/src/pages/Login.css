@@ -1,0 +1,12 @@
+.loginContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    height: 80vh;
+    /* background-color: rgb(255,162,119) */
+}
+
+.loginFont {
+    font-size: 50px !important ;
+}
