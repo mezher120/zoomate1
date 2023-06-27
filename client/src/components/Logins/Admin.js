@@ -4,7 +4,7 @@ import PersonOutlineTwoToneIcon from '@mui/icons-material/PersonOutlineTwoTone';
 import LockTwoToneIcon from '@mui/icons-material/LockTwoTone';
 import googleIcon from '../../assets/googleIcon.png'
 
-function Admin() {
+function Admin({google}) {
   return (
 <div  className='userFormContainer userContainerAdmin'>
         <div>
@@ -30,7 +30,7 @@ function Admin() {
             <div>
                 <span>Or...</span>
             </div>
-            <div className='userGoogleContainer'>
+            <div className='userGoogleContainer' onClick={() => google()}>
                 <img src={googleIcon} height='20' alt='G'></img>
                 <span>Google</span>
             </div>

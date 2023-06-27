@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Navbar.css'
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -13,9 +13,11 @@ import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
 import GroupTwoToneIcon from '@mui/icons-material/GroupTwoTone';
 import ExploreTwoToneIcon from '@mui/icons-material/ExploreTwoTone';
 import { places } from '../jsons/jsons';
+import { auth } from '../firebase'
+import { EmailAuthCredential } from 'firebase/auth';
 
 function Navbar() {
-
+  
   const [openDate, setOpenDate] = useState(false)
   const [openOptions, setOpenOptions] = useState(false)
   const [languageOpen, setLanguageOpen] = useState(false)
@@ -34,6 +36,13 @@ function Navbar() {
       key: 'selection'
     }
   ]);
+
+  const [user, setUser] = useState(null);
+  console.log(user, 'in navbar')
+  useEffect(() => {
+    const userConnected = localStorage.getItem('user')
+    setUser(userConnected)
+  }, [])
   
   function setOpensfx(props) {
     if (props === 'date') {
@@ -134,7 +143,15 @@ function Navbar() {
     setCitiesSearch(citiesArray);
   } 
 
-  const getToLogin = () => window.location.href = '/login'
+  const getToLogin = () => {
+  if (!user) {
+    window.location.href = '/login' 
+  } else {
+    auth.signOut() 
+    localStorage.removeItem('user')
+    setUser(null)
+  }
+}
 
   console.log(citiesSearch.length)
 
@@ -216,7 +233,10 @@ function Navbar() {
               </div>
             </div> }
             <NotificationsNoneIcon className='Navbuttons'></NotificationsNoneIcon>
+            <div className='NavUserLogin Navbuttons'>
             <AccountCircleIcon onClick={() => getToLogin()} className='Navbuttons'></AccountCircleIcon>
+            {user ? <span className='NavUserEmail'>{user}</span> : ""}
+            </div>
         </div>
     </div>
   )

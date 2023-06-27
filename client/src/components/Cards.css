@@ -35,6 +35,36 @@
     filter: sepia(30%)
 }
 
+.CardButtonLeft{
+    display: flex;
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.CardButtonRight {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.CardButtonRight:hover {
+    background-color: white;
+}
+
+.CardButtonLeft:hover {
+    background-color: white;
+}
+
 .CardFavoriteIcon {
     position: absolute;
     right: 10px;
