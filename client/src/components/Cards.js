@@ -5,6 +5,8 @@ import './Cards.css';
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 
+let counterImage = 0;
+
 function Cards() {
     // let slideIndex = 1;
     // console.log(first)
@@ -40,35 +42,44 @@ function Cards() {
     let imageArray = ['https://www.bhg.com/thmb/H9VV9JNnKl-H1faFXnPlQfNprYw=/1799x0/filters:no_upscale():strip_icc()/white-modern-house-curved-patio-archway-c0a4a3b3-aa51b24d14d0464ea15d36e05aa85ac9.jpg',
                         'https://bambooarquitectura.com/wp-content/uploads/2020/06/casa-tradicional-08.jpg',
                         'https://bambooarquitectura.com/wp-content/uploads/2020/06/casas-contemporaneas-02.jpg',
-                    'https://bambooarquitectura.com/wp-content/uploads/2020/06/casa-mujihouse-interior-madera.jpg']
+                    'https://canalhogar.com/wp-content/uploads/2023/01/Disenos-de-Casas-Modernas-Interiores-y-Exteriores.jpeg']
 
-    let [counterImage, setCounterImage] = useState(0);
+    // let [counterImage, setCounterImage] = useState(0);
+    // let counterImage = 0;
     let [image, setImage] = useState(imageArray[counterImage]);
     console.log(counterImage)
 
 
     function lessSlide() {
         if (counterImage > 0) {
-            setCounterImage(counterImage - 1);
+            // setCounterImage(counterImage - 1);
+            counterImage = counterImage - 1
             setImage(imageArray[counterImage]);
+            console.log(imageArray[counterImage])
             return;
         }
         if (counterImage === 0) {
-            setCounterImage(imageArray.length - 1);
+            // setCounterImage(imageArray.length - 1);
+            counterImage = imageArray.length - 1;
             setImage(imageArray[counterImage]);
+            console.log(imageArray[counterImage])
             return;
         }    
     }
 
     function plusSlide() {
-        if (counterImage < imageArray.length) {
-            setCounterImage(counterImage + 1);
+        if (counterImage < imageArray.length - 1) {
+            // setCounterImage(counterImage + 1);
+            counterImage = counterImage + 1;
             setImage(imageArray[counterImage]);
+            console.log(imageArray[counterImage])
             return;
         }
-        if (counterImage === imageArray.length) {
-            setCounterImage(0);
+        if (counterImage === imageArray.length - 1) {
+            // setCounterImage(0);
+            counterImage = 0;
             setImage(imageArray[0]);
+            console.log(imageArray[counterImage])
             return;
         }  
     }

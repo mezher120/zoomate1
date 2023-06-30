@@ -5,14 +5,21 @@
     gap: 50px;
     height: 80vh;
     /* background-color: rgb(255,162,119) */
+
 }
 
 .loginFont {
     font-size: 50px !important ;
+
 }
 
 .loginAlert {
     position: absolute;
     bottom: 10px;
     right: 10px;
+}
+
+.NavZoomate.com {
+    z-index: 99;
+    position: relative;
 }
