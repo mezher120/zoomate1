@@ -101,3 +101,25 @@
 .userGoogleContainer:hover {
     background-color: rgb(245, 245, 245);
 }
+
+.LoginModalStyle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.loginModalStyleButtons {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.loginModalInput {
+    margin-top: 10px;
+    justify-content: flex-start !important
+}
+
+.loginInputModal {
+    width: 100%;
+}

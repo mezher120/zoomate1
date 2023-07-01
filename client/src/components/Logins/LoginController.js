@@ -1,13 +1,31 @@
 
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import './LoginController.css';
 import PersonOutlineTwoToneIcon from '@mui/icons-material/PersonOutlineTwoTone';
 import LockTwoToneIcon from '@mui/icons-material/LockTwoTone';
 import SmartphoneTwoToneIcon from '@mui/icons-material/SmartphoneTwoTone';
 import AssignmentIndTwoToneIcon from '@mui/icons-material/AssignmentIndTwoTone';
 import googleIcon from '../../assets/googleIcon.png'
+import { Box, Modal, Typography } from '@mui/material';
 
-function LoginController({auth, google}) {
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
+
+function LoginController({auth, google, reset}) {
+    
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    const forgotPassword = useRef();
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -48,7 +66,7 @@ function LoginController({auth, google}) {
                         <div className='userInputRegistered'>
                         <div className='userInputContainer'>
                         <LockTwoToneIcon></LockTwoToneIcon>
-                        <input className='userInput' type='text' placeholder='Retype your password' value={repassword} onChange={(e) => setRePassword(e.target.value)} required></input>
+                        <input className='userInput' type='password' placeholder='Retype your password' value={repassword} onChange={(e) => setRePassword(e.target.value)} required></input>
                         </div>
                         <div className='userInputContainer'>
                         <AssignmentIndTwoToneIcon></AssignmentIndTwoToneIcon>
@@ -69,12 +87,39 @@ function LoginController({auth, google}) {
                         </div>
                      : null   
             }
-            {!register ? <a className='userForgotPassword'>Forgot password?</a> : null }
+            {!register ? <a className='userForgotPassword' onClick={handleOpen}>Forgot password?</a> : null }
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
+                <Typography id="modal-modal-title" variant="h6" component="h2">
+                    Forgot your password?
+                </Typography>
+                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                    Type your email: 
+                </Typography>
+                <div className='loginModalStyle'>
+                <div className='userInputContainer loginModalInput'>
+                <PersonOutlineTwoToneIcon></PersonOutlineTwoToneIcon>
+                <input className='userInput loginInputModal' type='email' placeholder='Type your email to recover your password ' name='forgotPasword' ref={forgotPassword}  required ></input>
+                </div>
+                <div className='loginModalStyleButtons'>
+                <button className='userButton' onClick={() => reset(forgotPassword.current.value)}>Send</button>
+                <button className='userButton' onClick={handleClose}>Close</button>
+
+                </div>
+
+                </div>
+                </Box>
+            </Modal>
             {register ? <a className='userForgotPassword' onClick={() => setRegister(!register)}>I have an account</a> 
                         : <a className='userForgotPassword' onClick={() => setRegister(!register)}>Not Registered?</a>
             } 
             {!register ? <input className='userButton' type='button' value='Sign In' onClick={() => auth(username, password)}></input>
-                        : <input className='userButton' type='button' value='Sign Up' onClick={() => auth(username, password, dataUserRegistration, register)}></input>
+                        : <input className='userButton' type='button' value='Sign Up' onClick={() => auth(username, password, repassword, dataUserRegistration, register)}></input>
             }
             </form>
             <div>

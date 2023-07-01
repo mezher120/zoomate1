@@ -7,10 +7,10 @@ import AssignmentIndTwoToneIcon from '@mui/icons-material/AssignmentIndTwoTone';
 import googleIcon from '../../assets/googleIcon.png'
 import LoginController from './LoginController';
 
-function Admin({google, auth}) {
+function Admin({google, auth, reset}) {
 
   return (
-    <LoginController auth={auth} google={google}></LoginController>
+    <LoginController auth={auth} google={google} reset={reset}></LoginController>
   )
 }
 

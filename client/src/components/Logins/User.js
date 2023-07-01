@@ -10,10 +10,10 @@ import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 
 import LoginController from './LoginController';
 
 
-function User({auth, google}) {
+function User({auth, google, reset}) {
     
   return (
-    <LoginController auth={auth} google={google}></LoginController>
+    <LoginController auth={auth} google={google} reset={reset}></LoginController>
   )
 }
 
