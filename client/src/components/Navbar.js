@@ -37,6 +37,21 @@ function Navbar() {
     }
   ]);
 
+  useEffect(() => {
+    window.addEventListener('mousedown', handleClickOut)
+    return () => {
+      
+      window.removeEventListener('mousedown', handleClickOut)
+    }
+    
+  },[])
+
+  function handleClickOut() {
+    setOpenDate(false);
+    setOpenOptions(false);
+    setCitiesSearch([]);
+  }
+
   const [user, setUser] = useState(null);
   console.log(user, 'in navbar')
   useEffect(() => {

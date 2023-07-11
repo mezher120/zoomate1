@@ -19,7 +19,7 @@ function CreatePlace() {
 
   let [numberOfPeople, setNumberOfPeople] = useState(0);
   let [hours, setHours] = useState(0);
-  const [photo, setPhoto] = useState("");
+  const [photos, setPhotos] = useState("");
   const [data, setData] = useState({
     country: "",
     city: "",
@@ -49,31 +49,40 @@ function CreatePlace() {
     saturday: false,
     sunday: false,
   })
-
-  console.log(photo)
-  async function createZoom() {
-    console.log(photo)
-    const newPhotoName = photo + Date.now();
-    const storageRef = ref(db, `images/${photo.name}`); // create reference to storage
-    try {
-      const uploadImageRes = await uploadBytes(storageRef, photo)
-      async function photoUrlStoragefx(storageRef) {
-        try {
-          await getDownloadURL(storageRef);
-        } catch (error) {
-          console.log(error.message)
+  const [dynamicInputPhoto, setDynamicInputPhoto] = useState([1, 1, 1])
+  console.log(dynamicInputPhoto, 'photo')
+  console.log(photos)
+  async function createZoom(e) {
+    e.preventDefault();
+    console.log(photos)
+    const pictures = [];
+    photos.map( async (photo) => {
+      const newPhotoName = photo + Date.now();
+      const storageRef = ref(db, `images/${photo.name}`); // create reference to storage
+      try {
+        const uploadImageRes = await uploadBytes(storageRef, photo)
+        const photoUrlStoragefx = async (storageRef) => {
+          try {
+            const photoUrlStorage = await getDownloadURL(storageRef);
+            pictures.push(photoUrlStorage);
+            console.log(photoUrlStorage, "url")
+            setData({...data, filter: filter, availability: availability, pictures: pictures})
+          } catch (error) {
+            console.log(error.message)
+          }
         }
+        await photoUrlStoragefx(storageRef) ;
+      } catch (error) {
+        console.log(error.message)
       }
-      const photoUrlStorage = photoUrlStoragefx(storageRef);
-      console.log(photoUrlStorage, "url")
-      setData({...data, filter: filter, availability: availability, pictures: photoUrlStorage})
-    } catch (error) {
-      console.log(error.message)
-    }
+      
+    })
+    console.log(pictures)
+    // setData({...data, filter: filter, availability: availability, pictures: pictures})
     console.log(data)
   }
 
-  function handleonChange(e) {
+   function handleonChange(e) {
     console.log(e.target.name)
     console.log(e.target.value)
     setData({...data, [e.target.name]: e.target.value})
@@ -190,8 +199,12 @@ function CreatePlace() {
               <input onChange={(e) => handleonChangeVoice(e)} type='range' min='0' max='10' value={hours} placeholder='Hours'
               name="noise"></input>
               <span>{hours}</span>
+              <h3>Photos</h3>
             </div>
-              <input type='file' id='filephotos' name='filePhotos' onChange={(e) => setPhoto(e.target.files[0])}></input>
+              {dynamicInputPhoto && dynamicInputPhoto.map((input, index) => (
+                <input type='file' id={index} name='filePhotos' onChange={(e) => setPhotos([...photos, e.target.files[0]])}></input>
+              ))}
+              <button onClick={() => setDynamicInputPhoto([...dynamicInputPhoto, 1])}>Add more...</button>
             <div>
               <h3>Rent and Price:</h3>
               <div className='createPlacePrice'>
@@ -218,7 +231,7 @@ function CreatePlace() {
         </div>
       <div className='border'></div>
       <div className='createPlaceButton'>
-      <button onClick={() => createZoom()}>Create Zoomate Place</button>
+      <button onClick={(e) => createZoom(e)}>Create Zoomate Place</button>
       </div>
     </div>
 
